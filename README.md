@@ -1,6 +1,6 @@
-# 🌬️ Collecteur de Données Qualité de l'Air - Centre-Val de Loire
+# 🌬️ Collecteur de Données Qualité de l'Air - France
 
-Ce projet collecte et analyse les données de qualité de l'air pour la région Centre-Val de Loire à partir de plusieurs sources externes :
+Ce projet collecte et analyse les données de qualité de l'air pour la France à partir de plusieurs sources externes :
 - **API Atmo France** : Données officielles nationales
 - **Web scraping (Lig'Air)** : Données locales extraites du site Lig'Air
 - **Big data** : (prévu, pour de gros volumes)
@@ -11,22 +11,18 @@ Ce projet collecte et analyse les données de qualité de l'air pour la région 
 
 ```
 PROJET_BLOC_1/
-├── main.py
 ├── scripts/
-├── utils/
+│   └── collect/
+│       ├── api_atmo.py
+│       ├── scraping_ligair.py
+│       └── ...
 ├── data_output/
 │   ├── api/                  # Données issues de l'API Atmo France
-│   │   ├── atmo_emissions_2024.json
-│   │   ├── atmo_emissions_all_regions.json
-│   │   ├── atmo_episodes_2024.csv
-│   │   ├── episodes_historique_2024_20250528_1226.csv
-│   │   └── centre_val_loire_emissions.json   # (extraction/filtrage API)
 │   ├── scraping_ligair/      # Données issues du scraping Lig'Air
-│   │   ├── scraping_ligair_data.json
-│   │   └── scraping_ligair_screenshot.png
-│   ├── big_data/            # (prévu pour de gros volumes)
-│   ├── files/               # (prévu pour fichiers CSV, XLS, etc.)
-│   └── databases/           # (prévu pour exports/dumps de bases de données)
+│   ├── files/                # Fichiers CSV, XLS, etc.
+│   ├── databases/            # Exports/dumps de bases de données
+│   ├── big_data/             # Données massives (prévu)
+│   └── processed/            # Données traitées ou filtrées
 ├── requirements.txt
 ├── .gitignore
 └── README.md
@@ -94,7 +90,7 @@ python scripts/scraping_ligair_selenium.py
 - Les fichiers extraits/filtrés de l'API peuvent être placés directement dans `api/`.
 - Adaptez la structure si vous ajoutez d'autres types de données.
 
-## �� Sources de Données
+## 📄 Sources de Données
 
 ### 1. API Atmo France
 - **URL** : https://admindata.atmo-france.org/
@@ -182,4 +178,4 @@ Pour toute question ou suggestion, n'hésitez pas à ouvrir une issue sur GitHub
 
 ---
 
-**Note** : Ce projet est développé dans le cadre d'un projet de collecte de données environnementales pour la région Centre-Val de Loire.
+**Note** : Ce projet est développé dans le cadre d'un projet de collecte de données environnementales pour la région France.
