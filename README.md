@@ -28,7 +28,7 @@ PROJET_BLOC_1/
 └── README.md
 ```
 
-- Les **fichiers extraits ou filtrés à partir de l'API** (ex : `centre_val_loire_emissions.json`) peuvent être placés directement dans `data_output/api/`.
+- Les **fichiers extraits ou filtrés à partir de l'API* peuvent être placés directement dans `data_output/api/`.
 - Les sous-dossiers vides sont prêts à accueillir de nouvelles sources si besoin.
 
 ## 🚀 Installation
@@ -178,4 +178,4 @@ Pour toute question ou suggestion, n'hésitez pas à ouvrir une issue sur GitHub
 
 ---
 
-**Note** : Ce projet est développé dans le cadre d'un projet de collecte de données environnementales pour la région Centre-Val de Loire.
+**Note** : Ce projet est développé dans le cadre d'un projet de collecte de données environnementales pour la France
