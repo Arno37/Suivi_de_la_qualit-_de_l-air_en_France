@@ -1,0 +1,92 @@
+{
+  "date_collecte": "2025-05-28T12:06:59.932128",
+  "source": "ligair_selenium_improved",
+  "url": "https://www.ligair.fr/",
+  "villes_dans_source": [
+    "Bourges",
+    "Chartres",
+    "Châteauroux",
+    "Tours",
+    "Blois",
+    "Orléans"
+  ],
+  "marqueurs_data": [
+    {
+      "marqueur": 1,
+      "contenu": "Bourges\nChartres\nChâteauroux\nTours\nBlois\nOrléans",
+      "selector_used": "[class*='tooltip']"
+    }
+  ],
+  "javascript_data": {
+    "mapHandler_exists": true,
+    "map_data": null,
+    "map_layers": [],
+    "window_vars": [
+      "mapHandler",
+      "dataLayer"
+    ]
+  },
+  "page_title": "Page d'accueil - Lig'Air",
+  "dom_data": [
+    {
+      "ville": "Bourges",
+      "contenu": "Bourges\nChartres\nChâteauroux\nTours\nBlois\nOrléans",
+      "methode": "xpath_text_search"
+    },
+    {
+      "ville": "Chartres",
+      "contenu": "Bourges\nChartres\nChâteauroux\nTours\nBlois\nOrléans",
+      "methode": "xpath_text_search"
+    },
+    {
+      "ville": "Châteauroux",
+      "contenu": "Bourges\nChartres\nChâteauroux\nTours\nBlois\nOrléans",
+      "methode": "xpath_text_search"
+    },
+    {
+      "ville": "Tours",
+      "contenu": "Bourges\nChartres\nChâteauroux\nTours\nBlois\nOrléans",
+      "methode": "xpath_text_search"
+    },
+    {
+      "ville": "Blois",
+      "contenu": "Bourges\nChartres\nChâteauroux\nTours\nBlois\nOrléans",
+      "methode": "xpath_text_search"
+    },
+    {
+      "ville": "Orléans",
+      "contenu": "Bourges\nChartres\nChâteauroux\nTours\nBlois\nOrléans",
+      "methode": "xpath_text_search"
+    },
+    {
+      "selector": "[class*='city']",
+      "contenu": "Bourges",
+      "methode": "css_selector_search"
+    },
+    {
+      "selector": "[class*='city']",
+      "contenu": "Chartres",
+      "methode": "css_selector_search"
+    },
+    {
+      "selector": "[class*='city']",
+      "contenu": "Châteauroux",
+      "methode": "css_selector_search"
+    },
+    {
+      "selector": "[class*='city']",
+      "contenu": "Tours",
+      "methode": "css_selector_search"
+    },
+    {
+      "selector": "[class*='city']",
+      "contenu": "Blois",
+      "methode": "css_selector_search"
+    },
+    {
+      "selector": "[class*='city']",
+      "contenu": "Orléans",
+      "methode": "css_selector_search"
+    }
+  ]
+}

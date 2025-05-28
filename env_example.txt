@@ -1,0 +1,15 @@
+# Configuration Atmo France API
+ATMO_USERNAME=votre_username_atmo
+ATMO_PASSWORD=votre_password_atmo
+
+# Année de collecte des données
+ANNEE=2024
+
+# Configuration Selenium (optionnel)
+SELENIUM_HEADLESS=false
+SELENIUM_TIMEOUT=60
+
+# Instructions :
+# 1. Copiez ce fichier vers .env
+# 2. Remplacez les valeurs par vos vraies informations
+# 3. Contactez Atmo France pour obtenir vos identifiants API 
