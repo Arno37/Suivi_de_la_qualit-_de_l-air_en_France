@@ -182,4 +182,4 @@ Pour toute question ou suggestion, n'hésitez pas à ouvrir une issue sur GitHub
 
 ---
 
-**Note** : Ce projet est développé dans le cadre d'un projet de collecte de données environnementales pour la région Centre-Val de Loire.
+**Note** : Ce projet est développé dans le cadre d'un projet de collecte de données environnementales pour la France.
