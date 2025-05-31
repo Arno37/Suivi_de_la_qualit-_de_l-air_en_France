@@ -6,3 +6,5 @@ beautifulsoup4
 lxml
 selenium
 webdriver-manager
+sqlalchemy
+psycopg2-binary
