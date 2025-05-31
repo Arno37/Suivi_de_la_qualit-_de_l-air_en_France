@@ -1,181 +1,138 @@
 # 🌬️ Collecteur de Données Qualité de l'Air - France
 
-Ce projet collecte et analyse les données de qualité de l'air pour la France à partir de plusieurs sources externes :
-- **API Atmo France** : Données officielles nationales
-- **Web scraping (Lig'Air)** : Données locales extraites du site Lig'Air
-- **Big data** : (prévu, pour de gros volumes)
-- **Fichiers plats** : CSV, XLS, etc. (prévu)
-- **Bases de données** : (prévu)
+Ce projet collecte et analyse les données de qualité de l'air pour la France, répondant aux critères du bloc de compétences 1 (Réaliser la collecte, le stockage et la mise à disposition des données).
+
+## 🎯 Réalisations
+
+1. **Collecte Multi-Source**
+   - API Atmo France : Données officielles nationales
+   - Web Scraping Lig'Air : Données locales en temps réel
+   - Fichiers CSV : Export des moyennes annuelles
+
+2. **Stockage Multiple**
+   - PostgreSQL : 1,081 mesures structurées
+     * CO : 19 mesures
+     * NO₂ : 392 mesures
+     * PM₁₀ : 361 mesures
+     * PM₂.₅ : 260 mesures
+     * C₆H₆ : 49 mesures
+   - MongoDB : Données historiques (Big Data)
+   - Système de fichiers : Exports et captures d'écran
+
+3. **Technologies Big Data**
+   - MongoDB : Stockage de données massives
+   - Volume : >20M points de données
+     * 5 ans de données (2020-2024)
+     * 365 jours par an
+     * 24 mesures par jour
+     * 5 polluants différents
+   - Agrégations et analyses temporelles
 
 ## 📁 Structure du Projet
 
-```
+```bash
 PROJET_BLOC_1/
 ├── scripts/
 │   └── collect/
-│       ├── api_atmo.py
-│       ├── scraping_ligair.py
-│       └── ...
+│       ├── api_atmo.py         # Collecte API Atmo France
+│       ├── scraping_ligair.py  # Web Scraping
+│       ├── bdd_export.py       # Export PostgreSQL
+│       └── big_data_collect.py # Collecte Big Data
 ├── data_output/
-│   ├── api/                  # Données issues de l'API Atmo France
-│   ├── scraping_ligair/      # Données issues du scraping Lig'Air
-│   ├── files/                # Fichiers CSV, XLS, etc.
-│   ├── databases/            # Exports/dumps de bases de données
-│   ├── big_data/             # Données massives (prévu)
-│   └── processed/            # Données traitées ou filtrées
-├── requirements.txt
-├── .gitignore
-└── README.md
+│   ├── api/                  # Données API
+│   ├── scraping/            # Captures d'écran et données
+│   ├── databases/           # Exports CSV et SQL
+│   └── big_data/           # Données MongoDB
+└── requirements.txt
 ```
-
-- Les **fichiers extraits ou filtrés à partir de l'API* peuvent être placés directement dans `data_output/api/`.
-- Les sous-dossiers vides sont prêts à accueillir de nouvelles sources si besoin.
 
 ## 🚀 Installation
 
-1. **Cloner le projet :**
-```bash
-git clone <url-du-repo>
-cd PROJET_BLOC_1
-```
+1. **Prérequis**
+   - Python 3.8+
+   - PostgreSQL 13+
+   - MongoDB
+   - Chrome (pour Selenium)
 
-2. **Installer les dépendances :**
+2. **Dépendances Python**
 ```bash
 pip install -r requirements.txt
 ```
 
-3. **Configuration (pour l'API Atmo) :**
-Créer un fichier `.env` avec vos identifiants :
+3. **Configuration**
 ```env
+# .env
 ATMO_USERNAME=votre_username
 ATMO_PASSWORD=votre_password
 ANNEE=2024
+
+# PostgreSQL
+USER=postgres
+PASSWORD=votre_password
+DB=postgres
+HOST=localhost
+PORT=5432
 ```
 
-## 🎯 Utilisation
+## 📊 Types de Données
 
-### Script Principal (Recommandé)
+1. **API Atmo France**
+   - Émissions régionales
+   - Concentrations horaires
+   - Indices qualité air
 
-```bash
-python main.py --source all
-```
+2. **Web Scraping (Lig'Air)**
+   - Données temps réel
+   - Validation visuelle
+   - Format : JSON + PNG
 
-### Scripts Individuels
+3. **PostgreSQL**
+   - Moyennes annuelles par polluant
+   - 5 polluants principaux
+   - 1,081 mesures totales
 
-```bash
-python scripts/collect_atmo.py
-python scripts/scraping_ligair_selenium.py
-```
-
-## 📊 Types de Données Collectées
-
-- **API** : Données issues d'appels API (Atmo France)
-- **Web scraping** : Données extraites de sites web (Lig'Air)
-- **Big data** : Données massives (prévu)
-- **Fichiers plats** : CSV, XLS, etc. (prévu)
-- **Bases de données** : Exports/dumps SQL, NoSQL (prévu)
+4. **MongoDB (Big Data)**
+   - Données historiques 2020-2024
+   - Multiple types de mesures
+   - Agrégations temporelles
+   - >20M points de données
 
 ## 🛠️ Technologies
 
-- **Python 3.8+**
-- **Requests**
-- **Selenium**
-- **BeautifulSoup4**
-- **python-dotenv**
-- **webdriver-manager**
+- **Collecte** :
+  * Requests : API
+  * Selenium : Web Scraping
+  * pandas : Manipulation données
+
+- **Stockage** :
+  * PostgreSQL : Données structurées
+  * MongoDB : Big Data
+  * SQLAlchemy : ORM
+  * PyMongo : Client MongoDB
+
+## 📈 Utilisation
+
+```bash
+# Collecte API
+python scripts/collect/api_atmo.py
+
+# Web Scraping
+python scripts/collect/scraping_ligair.py
+
+# Export PostgreSQL
+python scripts/collect/bdd_export.py
+
+# Collecte Big Data
+python scripts/collect/big_data_collect.py
+```
 
 ## 📝 Notes
 
-- Les sous-dossiers sont prêts à accueillir de nouvelles sources de données.
-- Les fichiers extraits/filtrés de l'API peuvent être placés directement dans `api/`.
-- Adaptez la structure si vous ajoutez d'autres types de données.
-
-## 📄 Sources de Données
-
-### 1. API Atmo France
-- **URL** : https://admindata.atmo-france.org/
-- **Données** : Émissions régionales, épisodes de pollution historiques
-- **Format** : JSON, CSV
-- **Authentification** : Requise
-
-### 2. Lig'Air (Scraping)
-- **URL** : https://www.ligair.fr/
-- **Données** : Indices ATMO et Pollen pour 6 villes
-- **Villes** : Bourges, Chartres, Châteauroux, Tours, Blois, Orléans
-- **Format** : JSON
-- **Méthode** : Selenium WebDriver
-
-## 📈 Données Collectées
-
-### API Atmo France
-- `emissions_regions_YYYY_timestamp.json` : Émissions par région
-- `episodes_historique_YYYY_timestamp.csv` : Historique des épisodes
-
-### Lig'Air
-- `ligair_selenium_improved_timestamp.json` : Indices des villes
-- `ligair_screenshot_timestamp.png` : Screenshots de debug
-
-## 🔧 Configuration Avancée
-
-### Variables d'Environnement (.env)
-```env
-# Authentification Atmo France
-ATMO_USERNAME=votre_username
-ATMO_PASSWORD=votre_password
-
-# Année de collecte
-ANNEE=2024
-
-# Configuration Selenium (optionnel)
-SELENIUM_HEADLESS=false
-SELENIUM_TIMEOUT=60
-```
-
-### Selenium
-Le script utilise ChromeDriver qui est installé automatiquement via `webdriver-manager`. Assurez-vous d'avoir Chrome installé sur votre système.
-
-## 🐛 Debug et Dépannage
-
-### Problèmes courants
-
-1. **Erreur d'authentification Atmo** :
-   - Vérifiez vos identifiants dans le fichier `.env`
-   - Contactez Atmo France pour obtenir un accès
-
-2. **Selenium ne trouve pas Chrome** :
-   - Installez Google Chrome
-   - Vérifiez que Chrome est dans le PATH
-
-3. **Timeout lors du scraping Lig'Air** :
-   - Le site charge les données dynamiquement
-   - Augmentez le timeout dans le script
-   - Vérifiez votre connexion internet
-
-### Script de Debug
-```bash
-python utils/debug_scraping.py
-```
-
-## 📝 Logs
-
-Les logs sont automatiquement générés dans le dossier `logs/` avec horodatage.
-
-## 🤝 Contribution
-
-1. Fork le projet
-2. Créer une branche feature (`git checkout -b feature/nouvelle-fonctionnalite`)
-3. Commit les changements (`git commit -am 'Ajout nouvelle fonctionnalité'`)
-4. Push vers la branche (`git push origin feature/nouvelle-fonctionnalite`)
-5. Créer une Pull Request
-
-## 📄 Licence
-
-Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
-
-## 📞 Contact
-
-Pour toute question ou suggestion, n'hésitez pas à ouvrir une issue sur GitHub.
+- Les données sont organisées par source
+- MongoDB gère les données historiques volumineuses
+- PostgreSQL stocke les moyennes annuelles
+- Validation visuelle du scraping par captures d'écran
 
 ---
 
-**Note** : Ce projet est développé dans le cadre d'un projet de collecte de données environnementales pour la France
+Projet développé dans le cadre du bloc de compétences 1 : Réaliser la collecte, le stockage et la mise à disposition des données d'un projet en intelligence artificielle.
